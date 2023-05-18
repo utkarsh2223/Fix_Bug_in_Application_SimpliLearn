@@ -89,12 +89,37 @@ public class Main {
         System.out.println("Closing your application... \nThank you!");
             }
     private static void searchExpenses(ArrayList<Integer> arrayList) {
-        int leng = arrayList.size();
+    	int leng = arrayList.size();
         System.out.println("Enter the expense you need to search:\t");
-        //Complete the method
+        Scanner sc = new Scanner(System.in);
+        int expenseToSearch = sc.nextInt();
+        boolean expenseFound = false;
+        
+        // Iterate through the expenses ArrayList and check if the expenseToSearch is present
+        for (int i = 0; i < leng; i++) {
+            if (arrayList.get(i) == expenseToSearch) {
+                System.out.println("Expense found at index " + i + ".");
+                expenseFound = true;
+                break; // Exit the loop if expense is found
+            }
+        }
+        
+        // If expense is not found
+        if (!expenseFound) {
+            System.out.println("Expense not found.");
+        }
+        optionsSelection(); // Go back to the options menu
     }
     private static void sortExpenses(ArrayList<Integer> arrayList) {
         int arrlength =  arrayList.size();
        //Complete the method. The expenses should be sorted in ascending order.
+        int arrlength =  arrayList.size();
+        Integer[] expensesArray = arrayList.toArray(new Integer[arrlength]);
+        Collections.sort(arrayList);
+        System.out.println("Expenses sorted in ascending order: ");
+        for (int i = 0; i < arrlength; i++) {
+            System.out.print(arrayList.get(i) + " ");
+        }
+        System.out.println();
     }
 }
